@@ -1,24 +1,33 @@
 # dummy_capstone
 
 ## Technologies
-- Frontend
-React as our framework, React Router for navigation, formik and yup for form and form validation, Redux toolkit for state management, with Redux with Persistent to store in local storage. React Dropzone for image upload.
-- Backend
-Node js as our runtime, express Js as our backend framework, Mongoose as ORM for managing our database. JSONweb token for authentication and multer for file upload.
+- #### Frontend
+React as our framework <br />
+React Router for navigation <br />
+Formik and Yup for form and form validation <br />
+Redux toolkit for state management, with Redux with Persistent to store in local storage<br />
+React Dropzone for image upload.
+- #### Backend
+Node js as our runtime <br />
+Express Js as our backend framework<br />
+Mongoose as ORM for managing our database<br />
+JSON Web Token for authentication<br />
+Multer for file upload.
 
-## Backend configuration ans setup
-- Install nodemon so our server refreshes every time we save 
-- Dependencies:
-express: library for backend
-body-parser: to process the request body
-bcrypt: for password encryption
-cors: for cross-origin request
-dotenv: for environment variables
-gridfs-stream: for file upload
-multer, multer-gridfs-storage: to upload our files locally
-helmet: for request safety
-morgan: for logging 
-jsonwebtoken: for authentication
-mongoose: for MongoDB access 
+## Backend configuration and setup
+- Install nodemon so our server refreshes every time we save <br />
 
-update package.json with adding property ```"type":"module",``` to use the import/export statement instead of ```const require()``` syntax.
+- <b>Dependencies:</b><br />
+express: library for backend<br />
+body-parser: to process the request body<br />
+bcrypt: for password encryption<br />
+cors: for cross-origin request<br />
+dotenv: for environment variables<br />
+gridfs-stream: for file upload<br />
+multer, multer-gridfs-storage: to upload our files locally<br />
+helmet: for request safety<br />
+morgan: for logging <br />
+jsonwebtoken: for authentication<br />
+mongoose: for MongoDB access <br />
+
+- Update package.json with adding property ```"type":"module",``` to use the import/export statement instead of ```const require()``` syntax.
