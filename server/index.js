@@ -8,6 +8,10 @@ import helmet from "helmet"
 import morgan from "morgan";
 import path from "path";
 import { fileURLToPath  } from "url";
+import authRoutes  from "./routes/auth.js";
+import userRoutes from "./routes/users.js";
+import { register } from "./controllers/auth.js";
+
 
 // Middleware and package Configuration
 // Middleware are functions that run between requests
@@ -39,4 +43,28 @@ const storage = multer.diskStorage({
     }
 }); //This is how we save our files. Anytime, someone uploads a file on our website, then it is going to be saved in "public/assets" folder 
 const upload = multer({ storage });
+
+// Routes with files
+app.post("/auth/register", upload.single("picture"), register); /* syntax: (endpoint, middleware, controller) 
+We will upload our pic locally into the public/assets folder. This the middleware i.e it's in between and occurs before our register functionality. 
+We can run our middleware fnc before we hit the endpoint and implement some functionality called controller(logic of endpoint)
+Since all routes have their own folder, this should go there but we are using the upload middleware,
+so we will use just this route here. The rest go in the routes folder
+*/
+
+// Routes
+app.use("/auth", authRoutes);
+app.use("/users", userRoutes);
+
+// Mongoose Setup
+const PORT =  process.env.PORT || 6001;
+mongoose
+    .connect(process.env.MONGO_URL, {
+        useNewUrlParser : true,
+        useUnifiedTopology : true,
+    })
+    .then(()=>{
+        app.listen(PORT, () => console.log(`Server running on Port ${PORT}`));
+    })
+    .catch(error => console.log(`${error} did not connect`));
 
