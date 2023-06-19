@@ -31,3 +31,4 @@ jsonwebtoken: for authentication<br />
 mongoose: for MongoDB access <br />
 
 - Update package.json with adding property ```"type":"module",``` to use the import/export statement instead of ```const require()``` syntax.
+
