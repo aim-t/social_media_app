@@ -11,6 +11,9 @@ import { fileURLToPath  } from "url";
 import authRoutes  from "./routes/auth.js";
 import userRoutes from "./routes/users.js";
 import { register } from "./controllers/auth.js";
+import { createPost } from "./controllers/posts.js";
+import { verifyToken } from "./middleware/auth.js";
+
 
 
 // Middleware and package Configuration
@@ -51,6 +54,7 @@ We can run our middleware fnc before we hit the endpoint and implement some func
 Since all routes have their own folder, this should go there but we are using the upload middleware,
 so we will use just this route here. The rest go in the routes folder
 */
+app.post("/posts", verifyToken, upload.single("picture"), createPost) /* When we send from the FE the image, this upload.single will set the picture property.*/
 
 // Routes
 app.use("/auth", authRoutes);
