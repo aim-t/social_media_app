@@ -13,8 +13,9 @@ import userRoutes from "./routes/users.js";
 import { register } from "./controllers/auth.js";
 import { createPost } from "./controllers/posts.js";
 import { verifyToken } from "./middleware/auth.js";
-
-
+import User from "./models/User.js";
+import Post from "./models/Post.js";
+import { users, posts } from "./data/index.js";
 
 // Middleware and package Configuration
 // Middleware are functions that run between requests
@@ -69,6 +70,9 @@ mongoose
     })
     .then(()=>{
         app.listen(PORT, () => console.log(`Server running on Port ${PORT}`));
+        // Add this Data only once
+        // User.insertMany(users);
+        // Post.insertMany(posts);
     })
     .catch(error => console.log(`${error} did not connect`));
 
