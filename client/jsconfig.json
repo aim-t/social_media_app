@@ -1,8 +1,8 @@
-{
-    "compilerOptions": {
-        "baseUrl": "src"
-    },
-    "include": ["src"]
-}
+// {
+//     "compilerOptions": {
+//         "baseUrl": "src"
+//     },
+//     "include": ["src"]
+// }
 
-//Helps with importing files with src as root
+// //Helps with importing files with src as root

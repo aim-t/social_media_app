@@ -1,21 +1,31 @@
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
-import Homepage from "scenes/homePage/Homepage";
-import LoginPage from "scenes/loginPage/LoginPage";
-import ProfilePage from "scenes/profilePage/ProfilePage";
+import HomePage from "./scenes/homePage/HomePage";
+import LoginPage from "./scenes/loginPage/LoginPage";
+import ProfilePage from "./scenes/profilePage/ProfilePage";
+import { useMemo } from "react";
+import { useSelector } from "react-redux";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
+import { themeSettings } from "./theme";
 
 function App() {
+  const mode = useSelector((state) => state.mode); //To get info from the store, we use the reducer
+  const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
 
   return (
     <div className="app">
       <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<LoginPage />} /> 
-        <Route path="/home" element={<Homepage />} /> 
-        <Route path="/profile/:userId" element={<ProfilePage />} /> 
-      </Routes>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />  
+          <Routes>
+            <Route path="/" element={<LoginPage />} />
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/profile/:userId" element={<ProfilePage />} />
+          </Routes>
+        </ThemeProvider>
       </BrowserRouter>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
