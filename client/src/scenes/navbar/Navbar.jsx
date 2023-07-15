@@ -25,14 +25,13 @@ import { setMode, setLogout } from "../../state";
 import { useNavigate } from "react-router-dom";
 import FlexBetween from "../../components/FlexBetween";
 
-function Navbar() {
+const Navbar = () => {
   const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
 
-  //use themes from our theme.js file
   const theme = useTheme();
   const neutralLight = theme.palette.neutral.light;
   const dark = theme.palette.neutral.dark;
@@ -40,12 +39,10 @@ function Navbar() {
   const primaryLight = theme.palette.primary.light;
   const alt = theme.palette.background.alt;
 
-  // const fullName = `${user.firstName} ${user.lastName}`;
-  const fullName = "Fake Person";
+  const fullName = `${user.firstName} ${user.lastName}`;
 
   return (
     <FlexBetween padding="1rem 6%" backgroundColor={alt}>
-      {/* This padding="" is for Box comp only. Other mui comps like buttons use CSS style i.e. padding:1rem " */}
       <FlexBetween gap="1.75rem">
         <Typography
           fontWeight="bold"
@@ -59,7 +56,6 @@ function Navbar() {
             },
           }}
         >
-          {/*clamp(minValue, desiredValue, maxValue) We get the desired value of 2rem.But if the screen becomes small, we use 1rem and for larger screen, we use 2.25rem for font size  */}
           LifeStory
         </Typography>
         {isNonMobileScreens && (
@@ -196,5 +192,6 @@ function Navbar() {
       )}
     </FlexBetween>
   );
-}
+};
+
 export default Navbar;
