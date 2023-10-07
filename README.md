@@ -1,4 +1,4 @@
-# dummy_capstone
+# Social Media App
 
 ## Technologies
 - #### Frontend
